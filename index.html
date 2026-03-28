@@ -1,1224 +1,644 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Untitled</title><style>
-/* cspell:disable-file */
-/* webkit printing magic: print all background colors */
-html {
-	-webkit-print-color-adjust: exact;
-}
-* {
-	box-sizing: border-box;
-	-webkit-print-color-adjust: exact;
-}
-
-html,
-body {
-	margin: 0;
-	padding: 0;
-}
-@media only screen {
-	body {
-		margin: 2em auto;
-		max-width: 900px;
-		color: rgb(55, 53, 47);
-	}
-}
-
-body {
-	line-height: 1.5;
-	white-space: pre-wrap;
-}
-
-a,
-a.visited {
-	color: inherit;
-	text-decoration: underline;
-}
-
-.pdf-relative-link-path {
-	font-size: 80%;
-	color: #444;
-}
-
-h1,
-h2,
-h3 {
-	letter-spacing: -0.01em;
-	line-height: 1.2;
-	font-weight: 600;
-	margin-bottom: 0;
-}
-
-/* Override strong tags inside headings to maintain consistent weight */
-h1 strong,
-h2 strong,
-h3 strong {
-	font-weight: 600;
-}
-
-.page-title {
-	font-size: 2.5rem;
-	font-weight: 700;
-	margin-top: 0;
-	margin-bottom: 0.75em;
-}
-
-h1 {
-	font-size: 1.875rem;
-	margin-top: 1.875rem;
-}
-
-h2 {
-	font-size: 1.5rem;
-	margin-top: 1.5rem;
-}
-
-h3 {
-	font-size: 1.25rem;
-	margin-top: 1.25rem;
-}
-
-.source {
-	border: 1px solid #ddd;
-	border-radius: 3px;
-	padding: 1.5em;
-	word-break: break-all;
-}
-
-.callout {
-	border-radius: 10px;
-	padding: 1rem;
-}
-
-figure {
-	margin: 1.25em 0;
-	page-break-inside: avoid;
-}
-
-figcaption {
-	opacity: 0.5;
-	font-size: 85%;
-	margin-top: 0.5em;
-}
-
-mark {
-	background-color: transparent;
-}
-
-.indented {
-	padding-left: 1.5em;
-}
-
-hr {
-	background: transparent;
-	display: block;
-	width: 100%;
-	height: 1px;
-	visibility: visible;
-	border: none;
-	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
-}
-
-img {
-	max-width: 100%;
-}
-
-@media only print {
-	img {
-		max-height: 100vh;
-		object-fit: contain;
-	}
-}
-
-@page {
-	margin: 1in;
-}
-
-.collection-content {
-	font-size: 0.875rem;
-}
-
-.collection-content td {
-	white-space: pre-wrap;
-	word-break: break-word;
-}
-
-.column-list {
-	display: flex;
-	gap: 46px;
-}
-
-.column {
-	min-width: 0;
-	overflow: hidden;
-}
-
-.column > *:first-child {
-	margin-top: 0;
-}
-
-.table_of_contents-item {
-	display: block;
-	font-size: 0.875rem;
-	line-height: 1.3;
-	padding: 0.125rem;
-}
-
-.table_of_contents-indent-1 {
-	margin-left: 1.5rem;
-}
-
-.table_of_contents-indent-2 {
-	margin-left: 3rem;
-}
-
-.table_of_contents-indent-3 {
-	margin-left: 4.5rem;
-}
-
-.table_of_contents-link {
-	text-decoration: none;
-	opacity: 0.7;
-	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
-}
-
-table,
-th,
-td {
-	border: 1px solid rgba(55, 53, 47, 0.09);
-	border-collapse: collapse;
-}
-
-table {
-	border-left: none;
-	border-right: none;
-}
-
-th,
-td {
-	font-weight: normal;
-	padding: 0.25em 0.5em;
-	line-height: 1.5;
-	min-height: 1.5em;
-	text-align: left;
-}
-
-th {
-	color: rgba(55, 53, 47, 0.6);
-}
-
-ol,
-ul {
-	margin: 0;
-	margin-block-start: 0.6em;
-	margin-block-end: 0.6em;
-}
-
-li > ol:first-child,
-li > ul:first-child {
-	margin-block-start: 0.6em;
-}
-
-ul > li {
-	list-style: disc;
-}
-
-ul.to-do-list {
-	padding-inline-start: 0;
-}
-
-ul.to-do-list > li {
-	list-style: none;
-}
-
-.to-do-children-checked {
-	text-decoration: line-through;
-	opacity: 0.375;
-}
-
-ul.toggle > li {
-	list-style: none;
-}
-
-ul {
-	padding-inline-start: 1.7em;
-}
-
-ul > li {
-	padding-left: 0.1em;
-}
-
-ol {
-	padding-inline-start: 1.6em;
-}
-
-ol > li {
-	padding-left: 0.2em;
-}
-
-.mono ol {
-	padding-inline-start: 2em;
-}
-
-.mono ol > li {
-	text-indent: -0.4em;
-}
-
-.toggle {
-	padding-inline-start: 0em;
-	list-style-type: none;
-}
-
-/* Indent toggle children */
-.toggle > li > details {
-	padding-left: 1.7em;
-}
-
-.toggle > li > details > summary {
-	margin-left: -1.1em;
-}
-
-.selected-value {
-	display: inline-block;
-	padding: 0 0.5em;
-	background: rgba(206, 205, 202, 0.5);
-	border-radius: 3px;
-	margin-right: 0.5em;
-	margin-top: 0.3em;
-	margin-bottom: 0.3em;
-	white-space: nowrap;
-}
-
-.collection-title {
-	display: inline-block;
-	margin-right: 1em;
-}
-
-.page-description {
-	margin-bottom: 2em;
-}
-
-.simple-table {
-	margin-top: 1em;
-	font-size: 0.875rem;
-	empty-cells: show;
-}
-.simple-table td {
-	height: 29px;
-	min-width: 120px;
-}
-
-.simple-table th {
-	height: 29px;
-	min-width: 120px;
-}
-
-.simple-table-header-color {
-	background: rgb(247, 246, 243);
-	color: black;
-}
-.simple-table-header {
-	font-weight: 500;
-}
-
-time {
-	opacity: 0.5;
-}
-
-.icon {
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-	max-width: 1.2em;
-	max-height: 1.2em;
-	text-decoration: none;
-	vertical-align: text-bottom;
-	margin-right: 0.5em;
-}
-
-img.icon {
-	border-radius: 3px;
-}
-
-.callout img.notion-static-icon {
-	width: 1em;
-	height: 1em;
-}
-
-.callout p {
-	margin: 0;
-}
-
-.callout h1,
-.callout h2,
-.callout h3 {
-	margin: 0 0 0.6rem;
-}
-
-.user-icon {
-	width: 1.5em;
-	height: 1.5em;
-	border-radius: 100%;
-	margin-right: 0.5rem;
-}
-
-.user-icon-inner {
-	font-size: 0.8em;
-}
-
-.text-icon {
-	border: 1px solid #000;
-	text-align: center;
-}
-
-.page-cover-image {
-	display: block;
-	object-fit: cover;
-	width: 100%;
-	max-height: 30vh;
-}
-
-.page-header-icon {
-	font-size: 3rem;
-	margin-bottom: 1rem;
-}
-
-.page-header-icon-with-cover {
-	margin-top: -0.72em;
-	margin-left: 0.07em;
-}
-
-.page-header-icon img {
-	border-radius: 3px;
-}
-
-.link-to-page {
-	margin: 1em 0;
-	padding: 0;
-	border: none;
-	font-weight: 500;
-}
-
-p > .user {
-	opacity: 0.5;
-}
-
-td > .user,
-td > time {
-	white-space: nowrap;
-}
-
-input[type="checkbox"] {
-	transform: scale(1.5);
-	margin-right: 0.6em;
-	vertical-align: middle;
-}
-
-p {
-	margin-top: 0.5em;
-	margin-bottom: 0.5em;
-}
-
-.image {
-	border: none;
-	margin: 1.5em 0;
-	padding: 0;
-	border-radius: 0;
-	text-align: center;
-}
-
-.code,
-code {
-	background: rgba(135, 131, 120, 0.15);
-	border-radius: 3px;
-	padding: 0.2em 0.4em;
-	border-radius: 3px;
-	font-size: 85%;
-	tab-size: 2;
-}
-
-code {
-	color: #eb5757;
-}
-
-.code {
-	padding: 1.5em 1em;
-}
-
-.code-wrap {
-	white-space: pre-wrap;
-	word-break: break-all;
-}
-
-.code > code {
-	background: none;
-	padding: 0;
-	font-size: 100%;
-	color: inherit;
-}
-
-blockquote {
-	font-size: 1em;
-	margin: 1em 0;
-	padding-left: 1em;
-	border-left: 3px solid rgb(55, 53, 47);
-}
-
-blockquote.quote-large {
-	font-size: 1.25em;
-}
-
-.bookmark {
-	text-decoration: none;
-	max-height: 8em;
-	padding: 0;
-	display: flex;
-	width: 100%;
-	align-items: stretch;
-}
-
-.bookmark-title {
-	font-size: 0.85em;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	height: 1.75em;
-	white-space: nowrap;
-}
-
-.bookmark-text {
-	display: flex;
-	flex-direction: column;
-}
-
-.bookmark-info {
-	flex: 4 1 180px;
-	padding: 12px 14px 14px;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-}
-
-.bookmark-image {
-	width: 33%;
-	flex: 1 1 180px;
-	display: block;
-	position: relative;
-	object-fit: cover;
-	border-radius: 1px;
-}
-
-.bookmark-description {
-	color: rgba(55, 53, 47, 0.6);
-	font-size: 0.75em;
-	overflow: hidden;
-	max-height: 4.5em;
-	word-break: break-word;
-}
-
-.bookmark-href {
-	font-size: 0.75em;
-	margin-top: 0.25em;
-}
-
-.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
-.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
-.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
-.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
-.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
-.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
-.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
-.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
-.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
-.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
-.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
-.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
-.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
-.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
-.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
-.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
-.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
-.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
-.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
-.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
-.highlight-default {
-	color: rgba(44, 44, 43, 1);
-}
-.highlight-gray {
-	color: rgba(125, 122, 117, 1);
-	fill: rgba(125, 122, 117, 1);
-}
-.highlight-brown {
-	color: rgba(159, 118, 90, 1);
-	fill: rgba(159, 118, 90, 1);
-}
-.highlight-orange {
-	color: rgba(210, 123, 45, 1);
-	fill: rgba(210, 123, 45, 1);
-}
-.highlight-yellow {
-	color: rgba(203, 148, 52, 1);
-	fill: rgba(203, 148, 52, 1);
-}
-.highlight-teal {
-	color: rgba(80, 148, 110, 1);
-	fill: rgba(80, 148, 110, 1);
-}
-.highlight-blue {
-	color: rgba(56, 125, 201, 1);
-	fill: rgba(56, 125, 201, 1);
-}
-.highlight-purple {
-	color: rgba(154, 107, 180, 1);
-	fill: rgba(154, 107, 180, 1);
-}
-.highlight-pink {
-	color: rgba(193, 76, 138, 1);
-	fill: rgba(193, 76, 138, 1);
-}
-.highlight-red {
-	color: rgba(207, 81, 72, 1);
-	fill: rgba(207, 81, 72, 1);
-}
-.highlight-default_background {
-	color: rgba(44, 44, 43, 1);
-}
-.highlight-gray_background {
-	background: rgba(42, 28, 0, 0.07);
-}
-.highlight-brown_background {
-	background: rgba(139, 46, 0, 0.086);
-}
-.highlight-orange_background {
-	background: rgba(224, 101, 1, 0.129);
-}
-.highlight-yellow_background {
-	background: rgba(211, 168, 0, 0.137);
-}
-.highlight-teal_background {
-	background: rgba(0, 100, 45, 0.09);
-}
-.highlight-blue_background {
-	background: rgba(0, 124, 215, 0.094);
-}
-.highlight-purple_background {
-	background: rgba(102, 0, 178, 0.078);
-}
-.highlight-pink_background {
-	background: rgba(197, 0, 93, 0.086);
-}
-.highlight-red_background {
-	background: rgba(223, 22, 0, 0.094);
-}
-.block-color-default {
-	color: inherit;
-	fill: inherit;
-}
-.block-color-gray {
-	color: rgba(125, 122, 117, 1);
-	fill: rgba(125, 122, 117, 1);
-}
-.block-color-brown {
-	color: rgba(159, 118, 90, 1);
-	fill: rgba(159, 118, 90, 1);
-}
-.block-color-orange {
-	color: rgba(210, 123, 45, 1);
-	fill: rgba(210, 123, 45, 1);
-}
-.block-color-yellow {
-	color: rgba(203, 148, 52, 1);
-	fill: rgba(203, 148, 52, 1);
-}
-.block-color-teal {
-	color: rgba(80, 148, 110, 1);
-	fill: rgba(80, 148, 110, 1);
-}
-.block-color-blue {
-	color: rgba(56, 125, 201, 1);
-	fill: rgba(56, 125, 201, 1);
-}
-.block-color-purple {
-	color: rgba(154, 107, 180, 1);
-	fill: rgba(154, 107, 180, 1);
-}
-.block-color-pink {
-	color: rgba(193, 76, 138, 1);
-	fill: rgba(193, 76, 138, 1);
-}
-.block-color-red {
-	color: rgba(207, 81, 72, 1);
-	fill: rgba(207, 81, 72, 1);
-}
-.block-color-default_background {
-	color: inherit;
-	fill: inherit;
-}
-.block-color-gray_background {
-	background: rgba(240, 239, 237, 1);
-}
-.block-color-brown_background {
-	background: rgba(245, 237, 233, 1);
-}
-.block-color-orange_background {
-	background: rgba(251, 235, 222, 1);
-}
-.block-color-yellow_background {
-	background: rgba(249, 243, 220, 1);
-}
-.block-color-teal_background {
-	background: rgba(232, 241, 236, 1);
-}
-.block-color-blue_background {
-	background: rgba(229, 242, 252, 1);
-}
-.block-color-purple_background {
-	background: rgba(243, 235, 249, 1);
-}
-.block-color-pink_background {
-	background: rgba(250, 233, 241, 1);
-}
-.block-color-red_background {
-	background: rgba(252, 233, 231, 1);
-}
-.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
-.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
-.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
-.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
-.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
-.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
-.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
-.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
-.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
-.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
-
-.checkbox {
-	display: inline-flex;
-	vertical-align: text-bottom;
-	width: 16;
-	height: 16;
-	background-size: 16px;
-	margin-left: 2px;
-	margin-right: 5px;
-}
-
-.checkbox-on {
-	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
-}
-
-.checkbox-off {
-	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
-}
-	
-</style></head><body><article id="3314e191-8a38-80ab-b54f-dd75f89492f4" class="page sans"><header><h1 class="page-title" dir="auto"></h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div style="display:contents" dir="auto"><p id="3314e191-8a38-802c-8de1-f6c9b2caa4e2" class="">&lt;!doctype html&gt;<br/>&lt;html lang=&quot;zh-Hant&quot;&gt;<br/>&lt;head&gt;<br/>&lt;meta charset=&quot;utf-8&quot; /&gt;<br/>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1&quot; /&gt;<br/>&lt;title&gt;街坊幫 NeighborHK｜香港社區互助平台&lt;/title&gt;<br/>&lt;meta name=&quot;description&quot; content=&quot;街坊幫是一個香港社區互助平台，支持物品捐贈、搭伙買餸、技能交換、物品借用、順風出行及大廈公告。&quot; /&gt;<br/>&lt;meta name=&quot;theme-color&quot; content=&quot;#ffffff&quot; /&gt;<br/>&lt;style&gt;<br/>:root{<br/>--bg:#f5f5f7;<br/>--card:#ffffff;<br/>--text:#1d1d1f;<br/>--sub:#6e6e73;<br/>--line:#e5e5e7;<br/>--brand:#34a853;<br/>--brand-dark:#248443;<br/>--radius:28px;<br/>--shadow:0 12px 30px rgba(0,0,0,.06);<br/>--max:1160px;<br/>}</p></div><div style="display:contents" dir="auto"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="3314e191-8a38-808b-80ca-c53a6f6fb3f6" class="code code-wrap"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-  margin:0;
-  font-family:-apple-system,BlinkMacSystemFont,&quot;SF Pro Display&quot;,&quot;Segoe UI&quot;,&quot;PingFang TC&quot;,&quot;Microsoft JhengHei&quot;,sans-serif;
-  background:var(--bg);
-  color:var(--text);
-  line-height:1.6;
-}
-a{text-decoration:none;color:inherit}
-.container{max-width:var(--max);margin:0 auto;padding:0 24px}
-.section{padding:96px 0}
-.center{text-align:center}
-
-.nav{
-  position:sticky;
-  top:0;
-  z-index:50;
-  background:rgba(245,245,247,.8);
-  backdrop-filter:blur(16px);
-  border-bottom:1px solid rgba(229,229,231,.8);
-}
-.nav-wrap{
-  height:72px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:20px;
-}
-.logo{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  font-weight:700;
-  font-size:19px;
-}
-.logo img{
-  width:40px;
-  height:40px;
-  border-radius:12px;
-  object-fit:cover;
-  display:block;
-  background:#fff;
-  border:1px solid var(--line);
-}
-.logo-fallback{
-  width:40px;height:40px;border-radius:12px;
-  display:grid;place-items:center;
-  background:linear-gradient(135deg,#34a853,#6fd38b);
-  color:white;font-size:18px;font-weight:700;
-  border:1px solid rgba(0,0,0,.04);
-}
-.nav-links{
-  display:flex;
-  align-items:center;
-  gap:22px;
-  color:var(--sub);
-  font-size:15px;
-  font-weight:500;
-}
-.nav-links a:hover{color:var(--text)}
-
-.hero{
-  padding:88px 0 56px;
-}
-.hero .eyebrow{
-  display:inline-block;
-  padding:8px 14px;
-  background:#fff;
-  border:1px solid var(--line);
-  border-radius:999px;
-  color:var(--sub);
-  font-size:14px;
-  font-weight:600;
-  margin-bottom:18px;
-}
-.hero h1{
-  font-size:68px;
-  line-height:1.05;
-  letter-spacing:-0.03em;
-  margin:0 0 18px;
-  font-weight:700;
-}
-.hero p{
-  max-width:760px;
-  margin:0 auto 28px;
-  font-size:22px;
-  color:var(--sub);
-  line-height:1.5;
-}
-.hero-actions{
-  display:flex;
-  justify-content:center;
-  gap:14px;
-  flex-wrap:wrap;
-  margin-bottom:34px;
-}
-.btn{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  padding:14px 24px;
-  border-radius:999px;
-  font-weight:600;
-  font-size:16px;
-  transition:.2s ease;
-  border:1px solid transparent;
-}
-.btn-primary{
-  background:var(--brand);
-  color:#fff;
-}
-.btn-primary:hover{background:var(--brand-dark)}
-.btn-secondary{
-  background:#fff;
-  color:var(--text);
-  border-color:var(--line);
-}
-.btn-secondary:hover{background:#fafafa}
-
-.hero-card{
-  margin-top:42px;
-  background:linear-gradient(180deg,#ffffff,#fbfbfc);
-  border:1px solid var(--line);
-  border-radius:36px;
-  box-shadow:var(--shadow);
-  padding:28px;
-}
-
-.mockup{
-  max-width:960px;
-  margin:0 auto;
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:22px;
-  align-items:center;
-}
-
-.mock-left{
-  padding:10px 8px;
-}
-.mock-left h2{
-  font-size:34px;
-  line-height:1.15;
-  margin:0 0 14px;
-  letter-spacing:-0.02em;
-}
-.mock-left p{
-  margin:0;
-  color:var(--sub);
-  font-size:17px;
-}
-
-.phone{
-  margin-left:auto;
-  width:100%;
-  max-width:360px;
-  background:#111;
-  padding:14px;
-  border-radius:34px;
-  box-shadow:0 20px 50px rgba(0,0,0,.18);
-}
-.screen{
-  min-height:620px;
-  border-radius:24px;
-  padding:18px;
-  background:linear-gradient(180deg,#ffffff,#f4f7f4);
-}
-.screen-top{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-bottom:16px;
-  font-weight:700;
-  font-size:15px;
-}
-.banner{
-  background:#34a853;
-  color:#fff;
-  border-radius:22px;
-  padding:18px;
-  margin-bottom:14px;
-}
-.banner strong{
-  display:block;
-  font-size:20px;
-  margin-bottom:6px;
-}
-.quick-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:10px;
-  margin-bottom:14px;
-}
-.quick-item{
-  background:#fff;
-  border:1px solid var(--line);
-  border-radius:18px;
-  padding:12px 8px;
-  text-align:center;
-  font-size:12px;
-  font-weight:600;
-}
-.quick-item span{
-  display:block;
-  font-size:22px;
-  margin-bottom:8px;
-}
-.feed{
-  background:#fff;
-  border:1px solid var(--line);
-  border-radius:18px;
-  padding:14px;
-  margin-bottom:10px;
-}
-.feed strong{
-  display:block;
-  margin-bottom:5px;
-  font-size:15px;
-}
-.feed small{
-  color:var(--sub);
-  font-size:13px;
-}
-
-.section-title{
-  font-size:48px;
-  line-height:1.1;
-  letter-spacing:-0.03em;
-  margin:0 0 14px;
-}
-.section-sub{
-  max-width:760px;
-  margin:0 auto;
-  color:var(--sub);
-  font-size:20px;
-}
-
-.features{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:18px;
-  margin-top:42px;
-}
-.feature{
-  background:var(--card);
-  border:1px solid var(--line);
-  border-radius:26px;
-  padding:26px;
-  box-shadow:0 4px 12px rgba(0,0,0,.03);
-}
-.feature .icon{
-  width:52px;height:52px;
-  border-radius:16px;
-  display:grid;place-items:center;
-  background:#f3f8f3;
-  font-size:26px;
-  margin-bottom:16px;
-}
-.feature h3{
-  margin:0 0 10px;
-  font-size:22px;
-  letter-spacing:-0.01em;
-}
-.feature p{
-  margin:0;
-  color:var(--sub);
-  font-size:15px;
-}
-
-.split{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:22px;
-  margin-top:42px;
-}
-.panel{
-  background:#fff;
-  border:1px solid var(--line);
-  border-radius:28px;
-  padding:30px;
-  box-shadow:0 4px 12px rgba(0,0,0,.03);
-}
-.panel h3{
-  margin:0 0 12px;
-  font-size:30px;
-  line-height:1.2;
-  letter-spacing:-0.02em;
-}
-.panel p{
-  margin:0 0 12px;
-  color:var(--sub);
-}
-.panel ul{
-  padding-left:18px;
-  margin:0;
-  color:var(--sub);
-}
-.panel li{margin:10px 0}
-
-.steps{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:18px;
-  margin-top:42px;
-}
-.step{
-  background:#fff;
-  border:1px solid var(--line);
-  border-radius:26px;
-  padding:26px;
-}
-.num{
-  width:38px;height:38px;border-radius:50%;
-  background:var(--text);color:#fff;
-  display:grid;place-items:center;
-  font-weight:700;
-  margin-bottom:16px;
-}
-.step h3{
-  margin:0 0 10px;
-  font-size:22px;
-}
-.step p{
-  margin:0;color:var(--sub)
-}
-
-.download{
-  background:#fff;
-  border:1px solid var(--line);
-  border-radius:32px;
-  padding:40px 28px;
-  text-align:center;
-  box-shadow:var(--shadow);
-}
-.download h2{
-  margin:0 0 12px;
-  font-size:40px;
-  letter-spacing:-0.02em;
-}
-.download p{
-  margin:0 auto 22px;
-  max-width:720px;
-  color:var(--sub);
-  font-size:18px;
-}
-.store-buttons{
-  display:flex;
-  gap:14px;
-  justify-content:center;
-  flex-wrap:wrap;
-}
-.store{
-  display:inline-flex;
-  align-items:center;
-  gap:10px;
-  padding:14px 18px;
-  border-radius:16px;
-  border:1px solid var(--line);
-  background:#fafafa;
-  font-weight:600;
-}
-
-footer{
-  padding:30px 0 50px;
-  color:var(--sub);
-  text-align:center;
-  font-size:14px;
-}
-footer a{
-  color:var(--sub);
-  margin:0 8px;
-}
-footer a:hover{color:var(--text)}
-
-@media (max-width: 980px){
-  .mockup,.split{grid-template-columns:1fr}
-  .features,.steps{grid-template-columns:1fr 1fr}
-  .hero h1{font-size:48px}
-}
-
-@media (max-width: 680px){
-  .nav-links{display:none}
-  .hero{padding-top:56px}
-  .hero h1{font-size:38px}
-  .hero p{font-size:18px}
-  .section{padding:64px 0}
-  .section-title{font-size:34px}
-  .section-sub{font-size:17px}
-  .features,.steps{grid-template-columns:1fr}
-  .download h2{font-size:30px}
-}</code></pre></div><div style="display:contents" dir="auto"><p id="3314e191-8a38-80d0-98b4-fd2d1214b41d" class="">&lt;/style&gt;<br/>&lt;/head&gt;<br/>&lt;body&gt;</p></div><div style="display:contents" dir="auto"><p id="3314e191-8a38-8087-9896-cab2721b0884" class="">&lt;nav class=&quot;nav&quot;&gt;<br/>&lt;div class=&quot;container nav-wrap&quot;&gt;<br/>&lt;a href=&quot;#&quot; class=&quot;logo&quot;&gt;<br/>&lt;!-- 如果有 logo.png，保留 img；如果沒有就刪掉 img，保留下面 fallback --&gt;<br/>&lt;img src=&quot;assets/logo.png&quot; alt=&quot;街坊幫 Logo&quot; onerror=&quot;this.style.display=&#x27;none&#x27;; this.nextElementSibling.style.display=&#x27;grid&#x27;;&quot;&gt;<br/>&lt;div class=&quot;logo-fallback&quot; style=&quot;display:none;&quot;&gt;鄰&lt;/div&gt;<br/>&lt;span&gt;街坊幫&lt;/span&gt;<br/>&lt;/a&gt;<br/>&lt;div class=&quot;nav-links&quot;&gt;<br/>&lt;a href=&quot;#features&quot;&gt;功能&lt;/a&gt;<br/>&lt;a href=&quot;#about&quot;&gt;特色&lt;/a&gt;<br/>&lt;a href=&quot;#how&quot;&gt;使用方式&lt;/a&gt;<br/>&lt;a href=&quot;#download&quot;&gt;下載&lt;/a&gt;<br/>&lt;a href=&quot;#contact&quot;&gt;聯絡&lt;/a&gt;<br/>&lt;/div&gt;<br/>&lt;/div&gt;<br/>&lt;/nav&gt;</p></div><div style="display:contents" dir="auto"><p id="3314e191-8a38-800e-b08d-e10058404d3e" class="">&lt;header class=&quot;hero center&quot;&gt;<br/>&lt;div class=&quot;container&quot;&gt;<br/>&lt;div class=&quot;eyebrow&quot;&gt;香港社區互助平台&lt;/div&gt;<br/>&lt;h1&gt;住得近，&lt;br&gt;就係最好嘅幫手。&lt;/h1&gt;<br/>&lt;p&gt;<br/>街坊幫讓同區鄰居更方便互相幫忙。你可以捐贈閒置物品、搭伙買餸、<br/>交換技能、借用工具、共乘順風車，以及即時接收大廈公告。<br/>&lt;/p&gt;<br/>&lt;div class=&quot;hero-actions&quot;&gt;<br/>&lt;a href=&quot;#features&quot; class=&quot;btn btn-primary&quot;&gt;查看核心功能&lt;/a&gt;<br/>&lt;a href=&quot;#download&quot; class=&quot;btn btn-secondary&quot;&gt;下載資訊&lt;/a&gt;<br/>&lt;/div&gt;</p></div><div style="display:contents" dir="auto"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="3314e191-8a38-800a-a751-fc728b7626e3" class="code code-wrap"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">  &lt;div class=&quot;hero-card&quot;&gt;
-    &lt;div class=&quot;mockup&quot;&gt;
-      &lt;div class=&quot;mock-left&quot; style=&quot;text-align:left;&quot;&gt;
-        &lt;h2&gt;把社區互助，&lt;br&gt;重新帶回生活日常。&lt;/h2&gt;
-        &lt;p&gt;
-          以香港屋苑與社區生活為出發點，讓鄰居之間分享資源、
-          分攤生活成本、互相幫忙，建立更有溫度的連結。
-        &lt;/p&gt;
-      &lt;/div&gt;
-
-      &lt;div class=&quot;phone&quot;&gt;
-        &lt;div class=&quot;screen&quot;&gt;
-          &lt;div class=&quot;screen-top&quot;&gt;
-            &lt;span&gt;📍 太古城花園&lt;/span&gt;
-            &lt;span&gt;🔔&lt;/span&gt;
-          &lt;/div&gt;
-
-          &lt;div class=&quot;banner&quot;&gt;
-            &lt;strong&gt;街坊互助，就係咁簡單&lt;/strong&gt;
-            &lt;div&gt;捐贈、借用、買餸、技能、出行、公告&lt;/div&gt;
-          &lt;/div&gt;
-
-          &lt;div class=&quot;quick-grid&quot;&gt;
-            &lt;div class=&quot;quick-item&quot;&gt;&lt;span&gt;🎁&lt;/span&gt;捐贈&lt;/div&gt;
-            &lt;div class=&quot;quick-item&quot;&gt;&lt;span&gt;🥬&lt;/span&gt;買餸&lt;/div&gt;
-            &lt;div class=&quot;quick-item&quot;&gt;&lt;span&gt;🔧&lt;/span&gt;技能&lt;/div&gt;
-            &lt;div class=&quot;quick-item&quot;&gt;&lt;span&gt;🔄&lt;/span&gt;借用&lt;/div&gt;
-            &lt;div class=&quot;quick-item&quot;&gt;&lt;span&gt;🚗&lt;/span&gt;出行&lt;/div&gt;
-            &lt;div class=&quot;quick-item&quot;&gt;&lt;span&gt;📢&lt;/span&gt;公告&lt;/div&gt;
-          &lt;/div&gt;
-
-          &lt;div class=&quot;feed&quot;&gt;
-            &lt;strong&gt;🎁 嬰兒手推車免費轉贈&lt;/strong&gt;
-            &lt;small&gt;九成新 · 屋苑大堂交收 · 200m&lt;/small&gt;
-          &lt;/div&gt;
-          &lt;div class=&quot;feed&quot;&gt;
-            &lt;strong&gt;🥬 星期六一齊去街市買餸&lt;/strong&gt;
-            &lt;small&gt;2/4人 · 北角街市 · 09:00&lt;/small&gt;
-          &lt;/div&gt;
-          &lt;div class=&quot;feed&quot;&gt;
-            &lt;strong&gt;📢 管理處通知：明天停水維修&lt;/strong&gt;
-            &lt;small&gt;10:00–14:00 · 請提早儲水&lt;/small&gt;
-          &lt;/div&gt;
-        &lt;/div&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;</code></pre></div><div style="display:contents" dir="auto"><p id="3314e191-8a38-8001-bc9f-cd66cbc25cfc" class="">&lt;/header&gt;</p></div><div style="display:contents" dir="auto"><p id="3314e191-8a38-808f-a95d-eda7d59b6b75" class="">&lt;section class=&quot;section center&quot; id=&quot;features&quot;&gt;<br/>&lt;div class=&quot;container&quot;&gt;<br/>&lt;h2 class=&quot;section-title&quot;&gt;六大核心功能&lt;/h2&gt;<br/>&lt;p class=&quot;section-sub&quot;&gt;<br/>從最貼近生活的需求出發，讓社區互助更簡單、更可信、更有效率。<br/>&lt;/p&gt;</p></div><div style="display:contents" dir="auto"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="3314e191-8a38-805e-8b6b-de10767ecbaa" class="code code-wrap"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">  &lt;div class=&quot;features&quot;&gt;
-    &lt;div class=&quot;feature&quot;&gt;
-      &lt;div class=&quot;icon&quot;&gt;🎁&lt;/div&gt;
-      &lt;h3&gt;物品捐贈&lt;/h3&gt;
-      &lt;p&gt;把不再需要的物品轉贈給有需要的街坊，讓資源重新流動，減少浪費。&lt;/p&gt;
-    &lt;/div&gt;
-    &lt;div class=&quot;feature&quot;&gt;
-      &lt;div class=&quot;icon&quot;&gt;🥬&lt;/div&gt;
-      &lt;h3&gt;搭伙買餸&lt;/h3&gt;
-      &lt;p&gt;同區鄰居一起去街市或超市買餸，分攤份量與費用，慳錢又方便。&lt;/p&gt;
-    &lt;/div&gt;
-    &lt;div class=&quot;feature&quot;&gt;
-      &lt;div class=&quot;icon&quot;&gt;🔧&lt;/div&gt;
-      &lt;h3&gt;技能交換&lt;/h3&gt;
-      &lt;p&gt;修電腦、補習、煮飯、清潔等能力互相交換，用時間創造價值。&lt;/p&gt;
-    &lt;/div&gt;
-    &lt;div class=&quot;feature&quot;&gt;
-      &lt;div class=&quot;icon&quot;&gt;🔄&lt;/div&gt;
-      &lt;h3&gt;物品借用&lt;/h3&gt;
-      &lt;p&gt;工具、電器、BB用品等短期借用，節省空間與重複購買成本。&lt;/p&gt;
-    &lt;/div&gt;
-    &lt;div class=&quot;feature&quot;&gt;
-      &lt;div class=&quot;icon&quot;&gt;🚗&lt;/div&gt;
-      &lt;h3&gt;順風出行&lt;/h3&gt;
-      &lt;p&gt;同區順路搭車，分攤交通成本，讓日常出行更靈活、更實用。&lt;/p&gt;
-    &lt;/div&gt;
-    &lt;div class=&quot;feature&quot;&gt;
-      &lt;div class=&quot;icon&quot;&gt;📢&lt;/div&gt;
-      &lt;h3&gt;大廈公告&lt;/h3&gt;
-      &lt;p&gt;即時接收停水、維修、消防演習及社區活動通知，不再錯過重要消息。&lt;/p&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;</code></pre></div><div style="display:contents" dir="auto"><p id="3314e191-8a38-808a-80e9-ce52bf53addb" class="">&lt;/section&gt;</p></div><div style="display:contents" dir="auto"><p id="3314e191-8a38-80bc-8ea6-fc7c591378e7" class="">&lt;section class=&quot;section center&quot; id=&quot;about&quot;&gt;<br/>&lt;div class=&quot;container&quot;&gt;<br/>&lt;h2 class=&quot;section-title&quot;&gt;為香港社區而設&lt;/h2&gt;<br/>&lt;p class=&quot;section-sub&quot;&gt;<br/>不只是工具，更是一個讓鄰里之間重新建立信任與連結的平台。<br/>&lt;/p&gt;</p></div><div style="display:contents" dir="auto"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="3314e191-8a38-8028-9f38-dd10bf0e5e90" class="code code-wrap"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">  &lt;div class=&quot;split&quot;&gt;
-    &lt;div class=&quot;panel&quot; style=&quot;text-align:left;&quot;&gt;
-      &lt;h3&gt;把「小幫忙」重新帶回生活&lt;/h3&gt;
-      &lt;p&gt;
-        香港人住得近，但不一定熟。街坊幫希望讓鄰里互助重新變得自然，
-        讓分享、交換與彼此支持成為日常的一部分。
-      &lt;/p&gt;
-      &lt;ul&gt;
-        &lt;li&gt;促進閒置資源再利用&lt;/li&gt;
-        &lt;li&gt;降低日常生活成本&lt;/li&gt;
-        &lt;li&gt;提升社區互動與參與感&lt;/li&gt;
-      &lt;/ul&gt;
-    &lt;/div&gt;
-
-    &lt;div class=&quot;panel&quot; style=&quot;text-align:left;&quot;&gt;
-      &lt;h3&gt;安全、可信、貼近生活節奏&lt;/h3&gt;
-      &lt;p&gt;
-        以社區為單位進行互助配對，結合身份驗證、信用評價與即時消息，
-        讓每一次互助都更安心、更高效。
-      &lt;/p&gt;
-      &lt;ul&gt;
-        &lt;li&gt;同區匹配，實際可行性更高&lt;/li&gt;
-        &lt;li&gt;信用評分與評價機制提升信任&lt;/li&gt;
-        &lt;li&gt;消息、公告、互助整合於同一平台&lt;/li&gt;
-      &lt;/ul&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;</code></pre></div><div style="display:contents" dir="auto"><p id="3314e191-8a38-809b-a88a-c45b8353e481" class="">&lt;/section&gt;</p></div><div style="display:contents" dir="auto"><p id="3314e191-8a38-8003-9f3a-fcf780fbfb32" class="">&lt;section class=&quot;section center&quot; id=&quot;how&quot;&gt;<br/>&lt;div class=&quot;container&quot;&gt;<br/>&lt;h2 class=&quot;section-title&quot;&gt;如何開始使用&lt;/h2&gt;<br/>&lt;p class=&quot;section-sub&quot;&gt;<br/>用簡單清晰的流程，讓街坊更容易開始第一次互助。<br/>&lt;/p&gt;</p></div><div style="display:contents" dir="auto"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="3314e191-8a38-80fc-9afc-f77eb731840a" class="code code-wrap"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">  &lt;div class=&quot;steps&quot;&gt;
-    &lt;div class=&quot;step&quot;&gt;
-      &lt;div class=&quot;num&quot;&gt;1&lt;/div&gt;
-      &lt;h3&gt;加入社區&lt;/h3&gt;
-      &lt;p&gt;選擇你所屬的大廈或屋苑，完成基本驗證，建立更可信的社區環境。&lt;/p&gt;
-    &lt;/div&gt;
-    &lt;div class=&quot;step&quot;&gt;
-      &lt;div class=&quot;num&quot;&gt;2&lt;/div&gt;
-      &lt;h3&gt;發布需求或資源&lt;/h3&gt;
-      &lt;p&gt;你可以捐贈物品、借用工具、發起搭伙買餸、提供技能或順風行程。&lt;/p&gt;
-    &lt;/div&gt;
-    &lt;div class=&quot;step&quot;&gt;
-      &lt;div class=&quot;num&quot;&gt;3&lt;/div&gt;
-      &lt;h3&gt;完成互助與評價&lt;/h3&gt;
-      &lt;p&gt;完成後雙方互評，累積信用，讓社區互助體驗持續提升。&lt;/p&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;</code></pre></div><div style="display:contents" dir="auto"><p id="3314e191-8a38-8069-ab3a-ef7275e5a121" class="">&lt;/section&gt;</p></div><div style="display:contents" dir="auto"><p id="3314e191-8a38-809a-bc7d-f89ebf30ff01" class="">&lt;section class=&quot;section&quot; id=&quot;download&quot;&gt;<br/>&lt;div class=&quot;container&quot;&gt;<br/>&lt;div class=&quot;download&quot;&gt;<br/>&lt;h2&gt;下載街坊幫&lt;/h2&gt;<br/>&lt;p&gt;<br/>App 正在開發與測試中。你可以先關注最新消息，日後將提供 iOS 與 Android 版本下載。<br/>&lt;/p&gt;<br/>&lt;div class=&quot;store-buttons&quot;&gt;<br/>&lt;div class=&quot;store&quot;&gt; App Store（即將推出）&lt;/div&gt;<br/>&lt;div class=&quot;store&quot;&gt;▶ Google Play（即將推出）&lt;/div&gt;<br/>&lt;/div&gt;<br/>&lt;/div&gt;<br/>&lt;/div&gt;<br/>&lt;/section&gt;</p></div><div style="display:contents" dir="auto"><p id="3314e191-8a38-8022-bc20-cf701a4e89cc" class="">&lt;section class=&quot;section&quot; id=&quot;contact&quot;&gt;<br/>&lt;div class=&quot;container&quot;&gt;<br/>&lt;div class=&quot;download&quot;&gt;<br/>&lt;h2&gt;聯絡我們&lt;/h2&gt;<br/>&lt;p&gt;<br/>如果你對街坊幫有興趣、想參與測試，或有合作構想，歡迎聯絡我們。<br/>&lt;/p&gt;<br/>&lt;div class=&quot;hero-actions&quot; style=&quot;margin-bottom:0;&quot;&gt;<br/>&lt;a class=&quot;btn btn-primary&quot; <a href="mailto:href=%22mailto:hello@neighborhk.com">href=&quot;mailto:hello@neighborhk.com</a>&quot;&gt;<a href="mailto:hello@neighborhk.com">hello@neighborhk.com</a>&lt;/a&gt;<br/>&lt;/div&gt;<br/>&lt;/div&gt;<br/>&lt;/div&gt;<br/>&lt;/section&gt;</p></div><div style="display:contents" dir="auto"><p id="3314e191-8a38-8086-b009-e2e727bc41ed" class="">&lt;footer&gt;<br/>&lt;div class=&quot;container&quot;&gt;<br/>© 2025 街坊幫 NeighborHK<br/>· &lt;a href=&quot;privacy.html&quot;&gt;隱私政策&lt;/a&gt;<br/>· &lt;a href=&quot;terms.html&quot;&gt;使用條款&lt;/a&gt;<br/>&lt;/div&gt;<br/>&lt;/footer&gt;</p></div><div style="display:contents" dir="auto"><p id="3314e191-8a38-80e6-8493-dea3d2c794c8" class="">&lt;/body&gt;<br/>&lt;/html&gt;</p></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>街坊幫 NeighborHK｜香港社區互助平台</title>
+  <meta name="description" content="街坊幫是一個香港社區互助平台，支持物品捐贈、搭伙買餸、技能交換、物品借用、順風出行及大廈公告。" />
+  <meta name="theme-color" content="#ffffff" />
+  <style>
+    :root{
+      --bg:#f5f5f7;
+      --card:#ffffff;
+      --text:#1d1d1f;
+      --sub:#6e6e73;
+      --line:#e5e5e7;
+      --brand:#34a853;
+      --brand-dark:#248443;
+      --radius:28px;
+      --shadow:0 12px 30px rgba(0,0,0,.06);
+      --max:1160px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI","PingFang TC","Microsoft JhengHei",sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.6;
+    }
+    a{text-decoration:none;color:inherit}
+    .container{max-width:var(--max);margin:0 auto;padding:0 24px}
+    .section{padding:96px 0}
+    .center{text-align:center}
+
+    .nav{
+      position:sticky;
+      top:0;
+      z-index:50;
+      background:rgba(245,245,247,.8);
+      backdrop-filter:blur(16px);
+      border-bottom:1px solid rgba(229,229,231,.8);
+    }
+    .nav-wrap{
+      height:72px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:20px;
+    }
+    .logo{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-weight:700;
+      font-size:19px;
+    }
+    .logo img{
+      width:40px;
+      height:40px;
+      border-radius:12px;
+      object-fit:cover;
+      display:block;
+      background:#fff;
+      border:1px solid var(--line);
+    }
+    .logo-fallback{
+      width:40px;height:40px;border-radius:12px;
+      display:grid;place-items:center;
+      background:linear-gradient(135deg,#34a853,#6fd38b);
+      color:white;font-size:18px;font-weight:700;
+      border:1px solid rgba(0,0,0,.04);
+    }
+    .nav-links{
+      display:flex;
+      align-items:center;
+      gap:22px;
+      color:var(--sub);
+      font-size:15px;
+      font-weight:500;
+    }
+    .nav-links a:hover{color:var(--text)}
+
+    .hero{
+      padding:88px 0 56px;
+    }
+    .hero .eyebrow{
+      display:inline-block;
+      padding:8px 14px;
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:999px;
+      color:var(--sub);
+      font-size:14px;
+      font-weight:600;
+      margin-bottom:18px;
+    }
+    .hero h1{
+      font-size:68px;
+      line-height:1.05;
+      letter-spacing:-0.03em;
+      margin:0 0 18px;
+      font-weight:700;
+    }
+    .hero p{
+      max-width:760px;
+      margin:0 auto 28px;
+      font-size:22px;
+      color:var(--sub);
+      line-height:1.5;
+    }
+    .hero-actions{
+      display:flex;
+      justify-content:center;
+      gap:14px;
+      flex-wrap:wrap;
+      margin-bottom:34px;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:14px 24px;
+      border-radius:999px;
+      font-weight:600;
+      font-size:16px;
+      transition:.2s ease;
+      border:1px solid transparent;
+    }
+    .btn-primary{
+      background:var(--brand);
+      color:#fff;
+    }
+    .btn-primary:hover{background:var(--brand-dark)}
+    .btn-secondary{
+      background:#fff;
+      color:var(--text);
+      border-color:var(--line);
+    }
+    .btn-secondary:hover{background:#fafafa}
+
+    .hero-card{
+      margin-top:42px;
+      background:linear-gradient(180deg,#ffffff,#fbfbfc);
+      border:1px solid var(--line);
+      border-radius:36px;
+      box-shadow:var(--shadow);
+      padding:28px;
+    }
+
+    .mockup{
+      max-width:960px;
+      margin:0 auto;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:22px;
+      align-items:center;
+    }
+
+    .mock-left{
+      padding:10px 8px;
+    }
+    .mock-left h2{
+      font-size:34px;
+      line-height:1.15;
+      margin:0 0 14px;
+      letter-spacing:-0.02em;
+    }
+    .mock-left p{
+      margin:0;
+      color:var(--sub);
+      font-size:17px;
+    }
+
+    .phone{
+      margin-left:auto;
+      width:100%;
+      max-width:360px;
+      background:#111;
+      padding:14px;
+      border-radius:34px;
+      box-shadow:0 20px 50px rgba(0,0,0,.18);
+    }
+    .screen{
+      min-height:620px;
+      border-radius:24px;
+      padding:18px;
+      background:linear-gradient(180deg,#ffffff,#f4f7f4);
+    }
+    .screen-top{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-bottom:16px;
+      font-weight:700;
+      font-size:15px;
+    }
+    .banner{
+      background:#34a853;
+      color:#fff;
+      border-radius:22px;
+      padding:18px;
+      margin-bottom:14px;
+    }
+    .banner strong{
+      display:block;
+      font-size:20px;
+      margin-bottom:6px;
+    }
+    .quick-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:10px;
+      margin-bottom:14px;
+    }
+    .quick-item{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:12px 8px;
+      text-align:center;
+      font-size:12px;
+      font-weight:600;
+    }
+    .quick-item span{
+      display:block;
+      font-size:22px;
+      margin-bottom:8px;
+    }
+    .feed{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:14px;
+      margin-bottom:10px;
+    }
+    .feed strong{
+      display:block;
+      margin-bottom:5px;
+      font-size:15px;
+    }
+    .feed small{
+      color:var(--sub);
+      font-size:13px;
+    }
+
+    .section-title{
+      font-size:48px;
+      line-height:1.1;
+      letter-spacing:-0.03em;
+      margin:0 0 14px;
+    }
+    .section-sub{
+      max-width:760px;
+      margin:0 auto;
+      color:var(--sub);
+      font-size:20px;
+    }
+
+    .features{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+      margin-top:42px;
+    }
+    .feature{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:26px;
+      padding:26px;
+      box-shadow:0 4px 12px rgba(0,0,0,.03);
+    }
+    .feature .icon{
+      width:52px;height:52px;
+      border-radius:16px;
+      display:grid;place-items:center;
+      background:#f3f8f3;
+      font-size:26px;
+      margin-bottom:16px;
+    }
+    .feature h3{
+      margin:0 0 10px;
+      font-size:22px;
+      letter-spacing:-0.01em;
+    }
+    .feature p{
+      margin:0;
+      color:var(--sub);
+      font-size:15px;
+    }
+
+    .split{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:22px;
+      margin-top:42px;
+    }
+    .panel{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:28px;
+      padding:30px;
+      box-shadow:0 4px 12px rgba(0,0,0,.03);
+    }
+    .panel h3{
+      margin:0 0 12px;
+      font-size:30px;
+      line-height:1.2;
+      letter-spacing:-0.02em;
+    }
+    .panel p{
+      margin:0 0 12px;
+      color:var(--sub);
+    }
+    .panel ul{
+      padding-left:18px;
+      margin:0;
+      color:var(--sub);
+    }
+    .panel li{margin:10px 0}
+
+    .steps{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+      margin-top:42px;
+    }
+    .step{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:26px;
+      padding:26px;
+    }
+    .num{
+      width:38px;height:38px;border-radius:50%;
+      background:var(--text);color:#fff;
+      display:grid;place-items:center;
+      font-weight:700;
+      margin-bottom:16px;
+    }
+    .step h3{
+      margin:0 0 10px;
+      font-size:22px;
+    }
+    .step p{
+      margin:0;color:var(--sub)
+    }
+
+    .download{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:32px;
+      padding:40px 28px;
+      text-align:center;
+      box-shadow:var(--shadow);
+    }
+    .download h2{
+      margin:0 0 12px;
+      font-size:40px;
+      letter-spacing:-0.02em;
+    }
+    .download p{
+      margin:0 auto 22px;
+      max-width:720px;
+      color:var(--sub);
+      font-size:18px;
+    }
+    .store-buttons{
+      display:flex;
+      gap:14px;
+      justify-content:center;
+      flex-wrap:wrap;
+    }
+    .store{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:14px 18px;
+      border-radius:16px;
+      border:1px solid var(--line);
+      background:#fafafa;
+      font-weight:600;
+    }
+
+    footer{
+      padding:30px 0 50px;
+      color:var(--sub);
+      text-align:center;
+      font-size:14px;
+    }
+    footer a{
+      color:var(--sub);
+      margin:0 8px;
+    }
+    footer a:hover{color:var(--text)}
+
+    @media (max-width: 980px){
+      .mockup,.split{grid-template-columns:1fr}
+      .features,.steps{grid-template-columns:1fr 1fr}
+      .hero h1{font-size:48px}
+    }
+
+    @media (max-width: 680px){
+      .nav-links{display:none}
+      .hero{padding-top:56px}
+      .hero h1{font-size:38px}
+      .hero p{font-size:18px}
+      .section{padding:64px 0}
+      .section-title{font-size:34px}
+      .section-sub{font-size:17px}
+      .features,.steps{grid-template-columns:1fr}
+      .download h2{font-size:30px}
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="container nav-wrap">
+      <a href="#" class="logo">
+        <!-- 如果有 logo.png，保留 img；如果沒有就刪掉 img，保留下面 fallback -->
+        <img src="assets/logo.png" alt="街坊幫 Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+        <div class="logo-fallback" style="display:none;">鄰</div>
+        <span>街坊幫</span>
+      </a>
+      <div class="nav-links">
+        <a href="#features">功能</a>
+        <a href="#about">特色</a>
+        <a href="#how">使用方式</a>
+        <a href="#download">下載</a>
+        <a href="#contact">聯絡</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero center">
+    <div class="container">
+      <div class="eyebrow">香港社區互助平台</div>
+      <h1>住得近，<br>就係最好嘅幫手。</h1>
+      <p>
+        街坊幫讓同區鄰居更方便互相幫忙。你可以捐贈閒置物品、搭伙買餸、
+        交換技能、借用工具、共乘順風車，以及即時接收大廈公告。
+      </p>
+      <div class="hero-actions">
+        <a href="#features" class="btn btn-primary">查看核心功能</a>
+        <a href="#download" class="btn btn-secondary">下載資訊</a>
+      </div>
+
+      <div class="hero-card">
+        <div class="mockup">
+          <div class="mock-left" style="text-align:left;">
+            <h2>把社區互助，<br>重新帶回生活日常。</h2>
+            <p>
+              以香港屋苑與社區生活為出發點，讓鄰居之間分享資源、
+              分攤生活成本、互相幫忙，建立更有溫度的連結。
+            </p>
+          </div>
+
+          <div class="phone">
+            <div class="screen">
+              <div class="screen-top">
+                <span>📍 太古城花園</span>
+                <span>🔔</span>
+              </div>
+
+              <div class="banner">
+                <strong>街坊互助，就係咁簡單</strong>
+                <div>捐贈、借用、買餸、技能、出行、公告</div>
+              </div>
+
+              <div class="quick-grid">
+                <div class="quick-item"><span>🎁</span>捐贈</div>
+                <div class="quick-item"><span>🥬</span>買餸</div>
+                <div class="quick-item"><span>🔧</span>技能</div>
+                <div class="quick-item"><span>🔄</span>借用</div>
+                <div class="quick-item"><span>🚗</span>出行</div>
+                <div class="quick-item"><span>📢</span>公告</div>
+              </div>
+
+              <div class="feed">
+                <strong>🎁 嬰兒手推車免費轉贈</strong>
+                <small>九成新 · 屋苑大堂交收 · 200m</small>
+              </div>
+              <div class="feed">
+                <strong>🥬 星期六一齊去街市買餸</strong>
+                <small>2/4人 · 北角街市 · 09:00</small>
+              </div>
+              <div class="feed">
+                <strong>📢 管理處通知：明天停水維修</strong>
+                <small>10:00–14:00 · 請提早儲水</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="section center" id="features">
+    <div class="container">
+      <h2 class="section-title">六大核心功能</h2>
+      <p class="section-sub">
+        從最貼近生活的需求出發，讓社區互助更簡單、更可信、更有效率。
+      </p>
+
+      <div class="features">
+        <div class="feature">
+          <div class="icon">🎁</div>
+          <h3>物品捐贈</h3>
+          <p>把不再需要的物品轉贈給有需要的街坊，讓資源重新流動，減少浪費。</p>
+        </div>
+        <div class="feature">
+          <div class="icon">🥬</div>
+          <h3>搭伙買餸</h3>
+          <p>同區鄰居一起去街市或超市買餸，分攤份量與費用，慳錢又方便。</p>
+        </div>
+        <div class="feature">
+          <div class="icon">🔧</div>
+          <h3>技能交換</h3>
+          <p>修電腦、補習、煮飯、清潔等能力互相交換，用時間創造價值。</p>
+        </div>
+        <div class="feature">
+          <div class="icon">🔄</div>
+          <h3>物品借用</h3>
+          <p>工具、電器、BB用品等短期借用，節省空間與重複購買成本。</p>
+        </div>
+        <div class="feature">
+          <div class="icon">🚗</div>
+          <h3>順風出行</h3>
+          <p>同區順路搭車，分攤交通成本，讓日常出行更靈活、更實用。</p>
+        </div>
+        <div class="feature">
+          <div class="icon">📢</div>
+          <h3>大廈公告</h3>
+          <p>即時接收停水、維修、消防演習及社區活動通知，不再錯過重要消息。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section center" id="about">
+    <div class="container">
+      <h2 class="section-title">為香港社區而設</h2>
+      <p class="section-sub">
+        不只是工具，更是一個讓鄰里之間重新建立信任與連結的平台。
+      </p>
+
+      <div class="split">
+        <div class="panel" style="text-align:left;">
+          <h3>把「小幫忙」重新帶回生活</h3>
+          <p>
+            香港人住得近，但不一定熟。街坊幫希望讓鄰里互助重新變得自然，
+            讓分享、交換與彼此支持成為日常的一部分。
+          </p>
+          <ul>
+            <li>促進閒置資源再利用</li>
+            <li>降低日常生活成本</li>
+            <li>提升社區互動與參與感</li>
+          </ul>
+        </div>
+
+        <div class="panel" style="text-align:left;">
+          <h3>安全、可信、貼近生活節奏</h3>
+          <p>
+            以社區為單位進行互助配對，結合身份驗證、信用評價與即時消息，
+            讓每一次互助都更安心、更高效。
+          </p>
+          <ul>
+            <li>同區匹配，實際可行性更高</li>
+            <li>信用評分與評價機制提升信任</li>
+            <li>消息、公告、互助整合於同一平台</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section center" id="how">
+    <div class="container">
+      <h2 class="section-title">如何開始使用</h2>
+      <p class="section-sub">
+        用簡單清晰的流程，讓街坊更容易開始第一次互助。
+      </p>
+
+      <div class="steps">
+        <div class="step">
+          <div class="num">1</div>
+          <h3>加入社區</h3>
+          <p>選擇你所屬的大廈或屋苑，完成基本驗證，建立更可信的社區環境。</p>
+        </div>
+        <div class="step">
+          <div class="num">2</div>
+          <h3>發布需求或資源</h3>
+          <p>你可以捐贈物品、借用工具、發起搭伙買餸、提供技能或順風行程。</p>
+        </div>
+        <div class="step">
+          <div class="num">3</div>
+          <h3>完成互助與評價</h3>
+          <p>完成後雙方互評，累積信用，讓社區互助體驗持續提升。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="download">
+    <div class="container">
+      <div class="download">
+        <h2>下載街坊幫</h2>
+        <p>
+          App 正在開發與測試中。你可以先關注最新消息，日後將提供 iOS 與 Android 版本下載。
+        </p>
+        <div class="store-buttons">
+          <div class="store"> App Store（即將推出）</div>
+          <div class="store">▶ Google Play（即將推出）</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="contact">
+    <div class="container">
+      <div class="download">
+        <h2>聯絡我們</h2>
+        <p>
+          如果你對街坊幫有興趣、想參與測試，或有合作構想，歡迎聯絡我們。
+        </p>
+        <div class="hero-actions" style="margin-bottom:0;">
+          <a class="btn btn-primary" href="mailto:hello@neighborhk.com">hello@neighborhk.com</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      © 2025 街坊幫 NeighborHK
+      · <a href="privacy.html">隱私政策</a>
+      · <a href="terms.html">使用條款</a>
+    </div>
+  </footer>
+
+</body>
+</html>
