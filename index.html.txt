@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>我的手机部署网页</title>
+  <style>
+    body { text-align: center; padding: 50px; font-family: sans-serif; }
+  </style>
+</head>
+<body>
+  <h1>🎉 成功部署！</h1>
+  <p>这是我用手机部署到 GitHub Pages 的网页</p>
+</body>
+</html>
